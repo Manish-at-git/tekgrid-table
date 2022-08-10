@@ -1,0 +1,61 @@
+@media screen and (max-width: 650px) {
+  .css-11xur9t-MuiPaper-root-MuiTableContainer-root {
+    overflow-x: scroll !important;
+  }
+}
+
+.TableContainer {
+  max-width: 1000;
+  border-radius: 8px;
+  border: 1px solid rgba(224, 224, 224, 1);
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); */
+  background-color: #fff;
+}
+
+.Cell {
+  display: flex;
+  align-items: "center";
+  justify-content: "flex-start";
+}
+
+.Table {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.TableHead {
+  background: #fafafa;
+}
+
+.TableHeadCell {
+  font-weight: 500 !important;
+  color: grey !important;
+  padding: 12px !important;
+  padding-left: 26px !important;
+  min-width: 40px;
+}
+
+.TableDataCellBlack {
+  font-weight: 600 !important;
+  color: #000;
+  border-bottom: none !important;
+  padding-left: 26px !important;
+  min-width: 40px;
+}
+
+.TableDataCell {
+  font-weight: 500 !important;
+  color: grey !important;
+  border-bottom: none !important;
+  padding-left: 26px !important;
+  min-width: 40px;
+}
+
+.TableT {
+  border-radius: 10px !important;
+  min-width: 400;
+}
