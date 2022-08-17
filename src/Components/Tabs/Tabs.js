@@ -31,12 +31,15 @@ function Tabs(props) {
 
     if (item === "Fiscal Year") {
       setPosts(FiscalYear);
+      setCurrentPage(1);
     }
     if (item === "Currency") {
       setPosts(Currency);
+      setCurrentPage(1);
     }
     if (item === "AR Setup") {
       setPosts(ARSetup);
+      setCurrentPage(1);
     }
     // setPosts();
   };
