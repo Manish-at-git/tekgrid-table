@@ -1,4 +1,6 @@
 import * as React from "react";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -45,13 +47,22 @@ export default function BasicTable(props) {
   let { black, icons } = props;
   const { items, requestSort } = useSortableData(props.data);
 
+  let paginatedData = [];
+  let count = Math.ceil(items.length / 2);
+  for (let i = 0; i <= count; i++) {
+    paginatedData.push(i);
+  }
+  console.log(count);
+
   const renderTableHeader = () => {
     let header = Object.keys(props.data[0]);
     return header.map((key, index) => {
       if (key === black) {
         black = index;
       }
-
+      if (key === "id") {
+        key = "hello";
+      }
       return (
         <TableCell align="center" key={index} className="TableHeadCell">
           {
@@ -69,39 +80,41 @@ export default function BasicTable(props) {
   };
 
   return (
-    <div className="Table">
-      <TableContainer className="TableContainer">
-        <Table className="TableT" aria-label="simple table">
-          <TableHead className="TableHead">
-            <TableRow>{renderTableHeader()}</TableRow>
-          </TableHead>
-          <TableBody>
-            {items.map((_, id) => {
-              let col = Object.values(items[id]);
+    <>
+      <div className="Table">
+        <TableContainer className="TableContainer">
+          <Table className="TableT" aria-label="simple table">
+            <TableHead className="TableHead">
+              <TableRow>{renderTableHeader()}</TableRow>
+            </TableHead>
+            <TableBody>
+              {items.map((_, id) => {
+                let col = Object.values(items[id]);
 
-              return (
-                <TableRow key={id}>
-                  {col.map((value, index) => {
-                    return (
-                      <TableCell
-                        align="left"
-                        key={index}
-                        className={
-                          index !== black
-                            ? "TableDataCell"
-                            : "TableDataCellBlack"
-                        }
-                      >
-                        {value}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </div>
+                return (
+                  <TableRow key={id}>
+                    {col.map((value, index) => {
+                      return (
+                        <TableCell
+                          align="left"
+                          key={index}
+                          className={
+                            index !== black
+                              ? "TableDataCell"
+                              : "TableDataCellBlack"
+                          }
+                        >
+                          {value}
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+    </>
   );
 }

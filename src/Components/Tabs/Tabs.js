@@ -13,16 +13,40 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import Pagination from "../Table/Pagination";
 
 function Tabs(props) {
   const { tabs } = props;
   const [currentTab, setCurrentTab] = useState("Fiscal Year");
-  console.log(currentTab);
+  const [posts, setPosts] = useState(students);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(2);
+
   const setTab = (item) => {
     setCurrentTab(item);
+    let FiscalYear = students;
+    let Currency = students4;
+    let ARSetup = students2;
+
+    if (item === "Fiscal Year") {
+      setPosts(FiscalYear);
+    }
+    if (item === "Currency") {
+      setPosts(Currency);
+    }
+    if (item === "ARSetup") {
+      setPosts(ARSetup);
+    }
+    // setPosts();
   };
 
-  const [action, setAction] = React.useState("");
+  const [action, setAction] = useState("");
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleChange = (event) => {
     setAction(event.target.value);
@@ -80,8 +104,7 @@ function Tabs(props) {
           </FormControl>
         </Box>
       </div>
-
-      {currentTab === "Fiscal Year" ? (
+      {/* {currentTab === "Fiscal Year" ? (
         <BasicTable data={students} black="id" icons={["email"]} />
       ) : currentTab === "Currency" ? (
         <BasicTable data={students4} black="id" icons={["gg", "hh"]} />
@@ -89,7 +112,13 @@ function Tabs(props) {
         <BasicTable data={students2} black="id" icons={["name"]} />
       ) : (
         <BasicTable data={students2} black="name" icons={["id"]} />
-      )}
+      )} */}
+      <BasicTable data={currentPosts} black="id" icons={["email"]} />
+      <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={posts.length}
+        paginate={paginate}
+      />
     </div>
   );
 }
