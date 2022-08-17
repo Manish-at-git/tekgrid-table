@@ -34,7 +34,7 @@ function Tabs(props) {
     if (item === "Currency") {
       setPosts(Currency);
     }
-    if (item === "ARSetup") {
+    if (item === "AR Setup") {
       setPosts(ARSetup);
     }
     // setPosts();

@@ -8,8 +8,17 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   }
 
   return (
-    <nav>
-      <ul className="pagination">
+    <div
+      style={{
+        marginTop: "20px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "flex-end",
+        marginLeft: "10px",
+        marginRight: "10px",
+      }}
+    >
+      <ul style={{ margin: 0 }} className="pagination">
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
             <span onClick={() => paginate(number)} className="page-link">
@@ -18,7 +27,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
           </li>
         ))}
       </ul>
-    </nav>
+    </div>
   );
 };
 
