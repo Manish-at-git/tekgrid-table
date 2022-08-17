@@ -1,4 +1,7 @@
+import { useState } from "react";
 import BasicTable from "./Components/Table/Table";
+import BasicTabs from "./Components/Tabs/Tabs";
+import Tabs from "./Components/Tabs/Tabs";
 
 function App() {
   // const students3 = [
@@ -60,13 +63,13 @@ function App() {
       hh: "hh",
     },
   ];
-  // const students2 = [
-  //   { id: 1, name: "Wasif", age: 21, email: "wasif@email.com" },
-  //   { id: 2, name: "Ali", age: 19, email: "ali@email.com" },
-  //   { id: 3, name: "Saad", age: 16, email: "saad@email.com" },
-  //   { id: 4, name: "Asad", age: 25, email: "asad@email.com" },
-  //   { id: 4, name: "Asad", age: 25, email: "asad@email.com" },
-  // ];
+  const students2 = [
+    { id: 1, name: "Wasif", age: 21, email: "wasif@email.com" },
+    { id: 2, name: "Ali", age: 19, email: "ali@email.com" },
+    { id: 3, name: "Saad", age: 16, email: "saad@email.com" },
+    { id: 4, name: "Asad", age: 25, email: "asad@email.com" },
+    { id: 4, name: "Asad", age: 25, email: "asad@email.com" },
+  ];
 
   const students = [
     {
@@ -121,14 +124,46 @@ function App() {
     },
   ];
 
+  const tabs = ["Fiscal Year", "Currency", "AR Setup", "Conclusion"];
+
+  const [currentTab, setCurrentTab] = useState("");
+  console.log(currentTab);
+  const setTab = (item) => {
+    setCurrentTab(item);
+  };
+
   return (
     <div className="App">
-      <BasicTable
-        data={students}
-        black="id"
-        icons={["email", "gg", "hh", "ff"]}
-      />
-      <BasicTable data={students4} black="aa" icons={["gg", "hh", "ff"]} />
+      <div
+        className="Tabs"
+        style={{
+          width: "400px",
+          margin: "30px",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        {tabs.map((item) => (
+          <span
+            key={item}
+            style={{ marginRight: "10px", color: "grey" }}
+            onClick={() => setTab(item)}
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+
+      {currentTab === "Fiscal Year" || currentTab === "" ? (
+        <BasicTable data={students} black="id" icons={["email"]} />
+      ) : currentTab === "Currency" ? (
+        <BasicTable data={students4} black="id" icons={["gg", "hh"]} />
+      ) : currentTab === "AR Setup" ? (
+        <BasicTable data={students2} black="id" icons={["name"]} />
+      ) : (
+        <BasicTable data={students2} black="name" icons={["id"]} />
+      )}
+      <BasicTabs />
     </div>
   );
 }

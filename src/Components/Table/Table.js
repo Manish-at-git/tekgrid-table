@@ -36,7 +36,6 @@ const useSortableData = (
         return 0;
       });
     }
-
     return sortableItems;
   }, [items, sortConfig]);
   return { items: sortedItems, requestSort };
@@ -77,8 +76,9 @@ export default function BasicTable(props) {
             <TableRow>{renderTableHeader()}</TableRow>
           </TableHead>
           <TableBody>
-            {items.map((item, id) => {
+            {items.map((_, id) => {
               let col = Object.values(items[id]);
+
               return (
                 <TableRow key={id}>
                   {col.map((value, index) => {

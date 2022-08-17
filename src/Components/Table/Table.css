@@ -10,10 +10,9 @@
 }
 
 .TableContainer {
-  max-width: 1000px;
+  max-width: 1200px;
   border-radius: 8px;
   border: 1px solid rgba(224, 224, 224, 1);
-  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); */
   background-color: #fff;
 }
 
