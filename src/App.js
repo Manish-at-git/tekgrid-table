@@ -1,7 +1,16 @@
 import { useState } from "react";
 import BasicTable from "./Components/Table/Table";
-import BasicTabs from "./Components/Tabs/Tabs";
-import Tabs from "./Components/Tabs/Tabs";
+import Home from "@mui/icons-material/Home";
+import ArrowForwardIos from "@mui/icons-material/ArrowForwardIos";
+import "./App.css";
+import { Button } from "@mui/material";
+
+import * as React from "react";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 function App() {
   // const students3 = [
@@ -124,37 +133,97 @@ function App() {
     },
   ];
 
-  const tabs = ["Fiscal Year", "Currency", "AR Setup", "Conclusion"];
+  const tabs = ["Fiscal Year", "Currency", "AR Setup", "AP Setup"];
 
-  const [currentTab, setCurrentTab] = useState("");
+  const [currentTab, setCurrentTab] = useState("Fiscal Year");
   console.log(currentTab);
   const setTab = (item) => {
     setCurrentTab(item);
   };
 
+  const [age, setAge] = React.useState("");
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
+
   return (
-    <div className="App">
+    <div className="App" style={{ border: "1px solid red" }}>
       <div
-        className="Tabs"
         style={{
-          width: "400px",
-          margin: "30px",
           display: "flex",
           justifyContent: "space-between",
+          padding: "20px",
         }}
       >
-        {tabs.map((item) => (
-          <span
-            key={item}
-            style={{ marginRight: "10px", color: "grey" }}
-            onClick={() => setTab(item)}
-          >
-            {item}
-          </span>
-        ))}
+        <span style={{ display: "flex", alignItems: "center", color: "grey" }}>
+          <Home />{" "}
+          <ArrowForwardIos
+            style={{
+              fontSize: "15px",
+              marginLeft: "20px",
+              marginRight: "20px",
+            }}
+          />
+          Setup
+        </span>
+        <Button variant="contained" style={{ backgroundColor: "grey" }}>
+          Add New
+        </Button>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          padding: "20px",
+        }}
+      >
+        <div
+          className="Tabs"
+          style={{
+            width: "400px",
+            margin: "30px",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          {tabs.map((item, id) => (
+            <span
+              key={id}
+              id={currentTab === item ? `tabs-${id}` : null}
+              style={{
+                marginRight: "10px",
+                color: "grey",
+                fontWeight: "500",
+                cursor: "pointer",
+              }}
+              onClick={() => setTab(item)}
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+        <div>
+          <Box sx={{ minWidth: 120 }}>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Age</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={age}
+                label="Age"
+                onChange={handleChange}
+              >
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
+        </div>
       </div>
 
-      {currentTab === "Fiscal Year" || currentTab === "" ? (
+      {currentTab === "Fiscal Year" ? (
         <BasicTable data={students} black="id" icons={["email"]} />
       ) : currentTab === "Currency" ? (
         <BasicTable data={students4} black="id" icons={["gg", "hh"]} />
@@ -163,7 +232,6 @@ function App() {
       ) : (
         <BasicTable data={students2} black="name" icons={["id"]} />
       )}
-      <BasicTabs />
     </div>
   );
 }
