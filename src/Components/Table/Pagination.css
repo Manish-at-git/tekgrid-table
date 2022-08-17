@@ -1,0 +1,8 @@
+.page-link {
+  margin-left: 1px;
+}
+
+.page {
+  color: red;
+  border: "1px solid red" !important;
+}

@@ -20,6 +20,7 @@ function Tabs(props) {
   const [currentTab, setCurrentTab] = useState("Fiscal Year");
   const [posts, setPosts] = useState(students);
   const [currentPage, setCurrentPage] = useState(1);
+
   const [postsPerPage] = useState(2);
 
   const setTab = (item) => {
@@ -46,7 +47,9 @@ function Tabs(props) {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   const handleChange = (event) => {
     setAction(event.target.value);
@@ -117,6 +120,7 @@ function Tabs(props) {
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={posts.length}
+        currentPage={currentPage}
         paginate={paginate}
       />
     </div>

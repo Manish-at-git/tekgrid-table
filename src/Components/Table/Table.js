@@ -47,13 +47,6 @@ export default function BasicTable(props) {
   let { black, icons } = props;
   const { items, requestSort } = useSortableData(props.data);
 
-  let paginatedData = [];
-  let count = Math.ceil(items.length / 2);
-  for (let i = 0; i <= count; i++) {
-    paginatedData.push(i);
-  }
-  console.log(count);
-
   const renderTableHeader = () => {
     let header = Object.keys(props.data[0]);
     return header.map((key, index) => {
