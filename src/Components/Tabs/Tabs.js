@@ -22,6 +22,8 @@ function Tabs(props) {
   const [currentPage, setCurrentPage] = useState(1);
   const [icons, setIcons] = useState([]);
   const [hideCol, setHideCol] = useState("");
+  const [changedName, setChangedName] = useState("");
+  const [newName, setNewName] = useState("");
   const [postsPerPage] = useState(2);
 
   const setTab = (item) => {
@@ -34,18 +36,24 @@ function Tabs(props) {
       setPosts(FiscalYear);
       setIcons(["email"]);
       setHideCol("name");
+      setChangedName("id");
+      setNewName("iddddd");
       setCurrentPage(1);
     }
     if (item === "Currency") {
       setPosts(Currency);
       setIcons(["aa"]);
       setHideCol("cc");
+      setChangedName("dd");
+      setNewName("ddddd");
       setCurrentPage(1);
     }
     if (item === "AR Setup") {
       setPosts(ARSetup);
       setIcons(["id"]);
       setHideCol("email");
+      setChangedName("name");
+      setNewName("nameeee");
       setCurrentPage(1);
     }
   };
@@ -117,7 +125,14 @@ function Tabs(props) {
         </Box>
       </div>
 
-      <BasicTable data={currentPosts} black="id" icons={icons} hide={hideCol} />
+      <BasicTable
+        data={currentPosts}
+        black="id"
+        icons={icons}
+        hide={hideCol}
+        name={changedName}
+        newName={newName}
+      />
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={posts.length}

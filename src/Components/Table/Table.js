@@ -27,8 +27,6 @@ const useSortableData = (
     let sortableItems = [...items];
     if (sortConfig !== null) {
       sortableItems.sort((a, b) => {
-        // console.log(a[sortConfig.index]);
-        // console.log(b[sortConfig.index]);
         if (a[sortConfig.index] < b[sortConfig.index]) {
           return sortConfig.direction === "ascending" ? -1 : 1;
         }
@@ -59,8 +57,8 @@ export default function BasicTable(props) {
         hide = index;
       }
       let changedHeader;
-      if (key === "id") {
-        changedHeader = "hello";
+      if (key === props.name) {
+        changedHeader = props.newName;
       }
       return (
         <TableCell
