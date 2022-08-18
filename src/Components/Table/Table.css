@@ -62,3 +62,7 @@
   border-radius: 10px !important;
   min-width: 400;
 }
+
+#hide {
+  display: none;
+}
