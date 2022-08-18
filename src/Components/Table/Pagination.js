@@ -24,7 +24,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
     >
       <div>
         Showing of {currentPage * postsPerPage - 1} to{" "}
-        {currentPage * postsPerPage} of {ceil * postsPerPage} results
+        {currentPage * postsPerPage} of {totalPosts} results
       </div>
       <ul style={{ margin: 0 }} className="pagination">
         <li className="page-item">
