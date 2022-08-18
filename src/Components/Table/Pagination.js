@@ -32,7 +32,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
       <ul style={{ margin: 0 }} className="pagination">
         <li className="page-item">
           <span
-            onClick={() => paginate(currentPage <= 0 ? 1 : currentPage - 1)}
+            onClick={() => paginate(currentPage === 1 ? 1 : currentPage - 1)}
             className="page-link"
           >
             <ArrowBackIos fontSize="sm" />

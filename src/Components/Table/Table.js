@@ -10,27 +10,28 @@ import "./Table.css";
 
 const useSortableData = (
   items,
-  config = { key: "id", direction: "ascending" }
+  config = { index: 0, direction: "ascending" }
 ) => {
   let direction;
   const [sortConfig, setSortConfig] = React.useState(config);
 
-  const requestSort = (key) => {
+  const requestSort = (index) => {
     direction = "ascending";
     if (sortConfig && sortConfig.direction === "ascending") {
       direction = "descending";
     }
-    setSortConfig({ key, direction });
+    setSortConfig({ index, direction });
   };
 
   const sortedItems = React.useMemo(() => {
     let sortableItems = [...items];
     if (sortConfig !== null) {
       sortableItems.sort((a, b) => {
-        if (a[sortConfig.key] < b[sortConfig.key]) {
+        console.log(a[sortConfig.index]);
+        if (a[sortConfig.index] < b[sortConfig.index]) {
           return sortConfig.direction === "ascending" ? -1 : 1;
         }
-        if (a[sortConfig.key] > b[sortConfig.key]) {
+        if (a[sortConfig.index] > b[sortConfig.index]) {
           return sortConfig.direction === "ascending" ? 1 : -1;
         }
         return 0;
@@ -53,27 +54,28 @@ export default function BasicTable(props) {
       if (key === black) {
         black = index;
       }
-      if (key === "name") {
+      if (key === props.hide) {
         hide = index;
       }
-
-      // if (key === "name") {
-      //   key = "hello";
-      // }
+      let changedHeader;
+      if (key === "id") {
+        changedHeader = "hello";
+      }
       return (
         <TableCell
           align="center"
           key={index}
           className="TableHeadCell"
-          id={`${key === "email" ? "hide" : ""}`}
+          id={`${key === props.hide ? "hide" : ""}`}
         >
           {
             <div className="Cell">
-              {key.toUpperCase()}
+              {changedHeader ? changedHeader.toUpperCase() : key.toUpperCase()}
               {"  "}
               {icons.includes(key.toLowerCase().trim()) ? null : (
                 <ArrowDropDownIcon onClick={() => requestSort(key)} />
               )}
+              {console.log(index)}
             </div>
           }
         </TableCell>

@@ -21,6 +21,7 @@ function Tabs(props) {
   const [posts, setPosts] = useState(students);
   const [currentPage, setCurrentPage] = useState(1);
   const [icons, setIcons] = useState([]);
+  const [hideCol, setHideCol] = useState("");
   const [postsPerPage] = useState(2);
 
   const setTab = (item) => {
@@ -32,16 +33,19 @@ function Tabs(props) {
     if (item === "Fiscal Year") {
       setPosts(FiscalYear);
       setIcons(["email"]);
+      setHideCol("name");
       setCurrentPage(1);
     }
     if (item === "Currency") {
       setPosts(Currency);
       setIcons(["aa"]);
+      setHideCol("cc");
       setCurrentPage(1);
     }
     if (item === "AR Setup") {
       setPosts(ARSetup);
       setIcons(["id"]);
+      setHideCol("email");
       setCurrentPage(1);
     }
   };
@@ -121,7 +125,7 @@ function Tabs(props) {
       ) : (
         <BasicTable data={students2} black="name" icons={["id"]} />
       )} */}
-      <BasicTable data={currentPosts} black="id" icons={icons} />
+      <BasicTable data={currentPosts} black="id" icons={icons} hide={hideCol} />
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={posts.length}
