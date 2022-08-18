@@ -116,15 +116,7 @@ function Tabs(props) {
           </FormControl>
         </Box>
       </div>
-      {/* {currentTab === "Fiscal Year" ? (
-        <BasicTable data={students} black="id" icons={["email"]} />
-      ) : currentTab === "Currency" ? (
-        <BasicTable data={students4} black="id" icons={["gg", "hh"]} />
-      ) : currentTab === "AR Setup" ? (
-        <BasicTable data={students2} black="id" icons={["name"]} />
-      ) : (
-        <BasicTable data={students2} black="name" icons={["id"]} />
-      )} */}
+
       <BasicTable data={currentPosts} black="id" icons={icons} hide={hideCol} />
       <Pagination
         postsPerPage={postsPerPage}

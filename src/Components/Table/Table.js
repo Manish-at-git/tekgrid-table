@@ -27,7 +27,8 @@ const useSortableData = (
     let sortableItems = [...items];
     if (sortConfig !== null) {
       sortableItems.sort((a, b) => {
-        console.log(a[sortConfig.index]);
+        // console.log(a[sortConfig.index]);
+        // console.log(b[sortConfig.index]);
         if (a[sortConfig.index] < b[sortConfig.index]) {
           return sortConfig.direction === "ascending" ? -1 : 1;
         }
@@ -75,7 +76,6 @@ export default function BasicTable(props) {
               {icons.includes(key.toLowerCase().trim()) ? null : (
                 <ArrowDropDownIcon onClick={() => requestSort(key)} />
               )}
-              {console.log(index)}
             </div>
           }
         </TableCell>
@@ -94,7 +94,6 @@ export default function BasicTable(props) {
             <TableBody>
               {items.map((_, id) => {
                 let col = Object.values(items[id]);
-                // console.log(id, hide);
 
                 return (
                   <TableRow key={id}>
