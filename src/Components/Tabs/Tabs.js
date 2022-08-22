@@ -83,6 +83,7 @@ function Tabs(props) {
 
   const handleItemChange = (event) => {
     setItemPerPage(event.target.value);
+    setCurrentPage(1);
   };
 
   return (
