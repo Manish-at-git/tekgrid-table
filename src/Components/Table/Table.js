@@ -42,9 +42,10 @@ const useSortableData = (
 };
 
 export default function BasicTable(props) {
-  let hide;
+  let hide = [];
   let { black, icons } = props;
   const { items, requestSort } = useSortableData(props.data);
+  console.log(props.hide);
 
   const renderTableHeader = () => {
     let header = Object.keys(props.data[0]);
@@ -53,8 +54,9 @@ export default function BasicTable(props) {
       if (key === black) {
         black = index;
       }
-      if (key === props.hide) {
-        hide = index;
+      if (props.hide.includes(key)) {
+        hide.push(index);
+        console.log(hide);
       }
       let changedHeader;
       if (key === props.name) {
@@ -65,7 +67,7 @@ export default function BasicTable(props) {
           align="center"
           key={index}
           className="TableHeadCell"
-          id={`${key === props.hide ? "hide" : ""}`}
+          id={`${props.hide.includes(key) ? "hide" : ""}`}
         >
           {
             <div className="Cell">
@@ -105,7 +107,7 @@ export default function BasicTable(props) {
                               ? "TableDataCell"
                               : "TableDataCellBlack"
                           }
-                          id={`${index === hide ? "hide" : ""}`}
+                          id={`${hide.includes(index) ? "hide" : ""}`}
                         >
                           {value}
                         </TableCell>

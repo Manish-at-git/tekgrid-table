@@ -21,10 +21,10 @@ function Tabs(props) {
   const [posts, setPosts] = useState(students);
   const [currentPage, setCurrentPage] = useState(1);
   const [icons, setIcons] = useState([]);
-  const [hideCol, setHideCol] = useState("");
-  const [changedName, setChangedName] = useState("");
-  const [newName, setNewName] = useState("");
-  const [black, setBlack] = useState("");
+  const [hideCol, setHideCol] = useState(["name", "email"]);
+  const [changedName, setChangedName] = useState("id");
+  const [newName, setNewName] = useState("iddddd");
+  const [black, setBlack] = useState("id");
   const [postsPerPage] = useState(2);
 
   const setTab = (item) => {
@@ -36,7 +36,7 @@ function Tabs(props) {
     if (item === "Fiscal Year") {
       setPosts(FiscalYear);
       setIcons(["email"]);
-      setHideCol("name");
+      setHideCol(["name", "email"]);
       setBlack("id");
       setChangedName("id");
       setNewName("iddddd");
@@ -45,7 +45,7 @@ function Tabs(props) {
     if (item === "Currency") {
       setPosts(Currency);
       setIcons(["aa"]);
-      setHideCol("cc");
+      setHideCol(["cc", "ff"]);
       setBlack("dd");
       setChangedName("dd");
       setNewName("ddddd");
@@ -54,7 +54,7 @@ function Tabs(props) {
     if (item === "AR Setup") {
       setPosts(ARSetup);
       setIcons(["id"]);
-      setHideCol("email");
+      setHideCol(["name", "email"]);
       setBlack("id");
       setChangedName("name");
       setNewName("nameeee");
