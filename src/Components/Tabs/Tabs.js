@@ -25,7 +25,6 @@ function Tabs(props) {
   const [changedName, setChangedName] = useState("id");
   const [newName, setNewName] = useState("iddddd");
   const [black, setBlack] = useState("id");
-  const [postsPerPage] = useState(2);
 
   const setTab = (item) => {
     setCurrentTab(item);
@@ -54,7 +53,7 @@ function Tabs(props) {
     if (item === "AR Setup") {
       setPosts(ARSetup);
       setIcons(["id"]);
-      setHideCol(["name", "email"]);
+      setHideCol(["name"]);
       setBlack("id");
       setChangedName("name");
       setNewName("nameeee");
@@ -63,9 +62,10 @@ function Tabs(props) {
   };
 
   const [action, setAction] = useState("");
+  const [itemPerPage, setItemPerPage] = useState(2);
 
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const indexOfLastPost = currentPage * itemPerPage;
+  const indexOfFirstPost = indexOfLastPost - itemPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   const paginate = (pageNumber) => {
@@ -74,6 +74,10 @@ function Tabs(props) {
 
   const handleChange = (event) => {
     setAction(event.target.value);
+  };
+
+  const handleItemChange = (event) => {
+    setItemPerPage(event.target.value);
   };
 
   return (
@@ -185,11 +189,29 @@ function Tabs(props) {
         newName={newName}
       />
       <Pagination
-        postsPerPage={postsPerPage}
+        postsPerPage={itemPerPage}
         totalPosts={posts.length}
         currentPage={currentPage}
         paginate={paginate}
       />
+      <Box sx={{ margin: "10px", minWidth: 120 }}>
+        <FormControl sx={{ minWidth: 120 }} size="small">
+          <InputLabel id="demo-select-small">ItemPerPage</InputLabel>
+          <Select
+            labelId="demo-select-small"
+            id="demo-select-small"
+            value={itemPerPage}
+            label="ItemPerPage"
+            onChange={handleItemChange}
+          >
+            <MenuItem value={1}>One</MenuItem>
+            <MenuItem value={2}>Two</MenuItem>
+            <MenuItem value={3}>Three</MenuItem>
+            <MenuItem value={4}>Four</MenuItem>
+            <MenuItem value={5}>Five</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
     </div>
   );
 }
