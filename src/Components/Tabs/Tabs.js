@@ -24,6 +24,7 @@ function Tabs(props) {
   const [hideCol, setHideCol] = useState("");
   const [changedName, setChangedName] = useState("");
   const [newName, setNewName] = useState("");
+  const [black, setBlack] = useState("");
   const [postsPerPage] = useState(2);
 
   const setTab = (item) => {
@@ -36,6 +37,7 @@ function Tabs(props) {
       setPosts(FiscalYear);
       setIcons(["email"]);
       setHideCol("name");
+      setBlack("id");
       setChangedName("id");
       setNewName("iddddd");
       setCurrentPage(1);
@@ -44,6 +46,7 @@ function Tabs(props) {
       setPosts(Currency);
       setIcons(["aa"]);
       setHideCol("cc");
+      setBlack("dd");
       setChangedName("dd");
       setNewName("ddddd");
       setCurrentPage(1);
@@ -52,6 +55,7 @@ function Tabs(props) {
       setPosts(ARSetup);
       setIcons(["id"]);
       setHideCol("email");
+      setBlack("id");
       setChangedName("name");
       setNewName("nameeee");
       setCurrentPage(1);
@@ -125,9 +129,56 @@ function Tabs(props) {
         </Box>
       </div>
 
+      {/* {currentTab === 1 ? (
+        <BasicTable
+          data={currentPosts}
+          black={black}
+          icons={icons}
+          hide={hideCol}
+          name={changedName}
+          newName={newName}
+        />
+      ) : currentTab === 2 ? (
+        <BasicTable
+          data={currentPosts}
+          black={black}
+          icons={icons}
+          hide={hideCol}
+          name={changedName}
+          newName={newName}
+        />
+      ) : currentTab === 3 ? (
+        <BasicTable
+          data={currentPosts}
+          black={black}
+          icons={icons}
+          hide={hideCol}
+          name={changedName}
+          newName={newName}
+        />
+      ) : currentTab === 4 ? (
+        <BasicTable
+          data={currentPosts}
+          black={black}
+          icons={icons}
+          hide={hideCol}
+          name={changedName}
+          newName={newName}
+        />
+      ) : currentTab === 5 ? (
+        <BasicTable
+          data={currentPosts}
+          black={black}
+          icons={icons}
+          hide={hideCol}
+          name={changedName}
+          newName={newName}
+        />
+      ) : null} */}
+
       <BasicTable
         data={currentPosts}
-        black="id"
+        black={black}
         icons={icons}
         hide={hideCol}
         name={changedName}
