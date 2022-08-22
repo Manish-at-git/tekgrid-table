@@ -22,13 +22,14 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
         marginRight: "10px",
       }}
     >
-      <div>
+      {/* <div>
         Showing of {currentPage * postsPerPage - 1} to{" "}
         {currentPage * postsPerPage > totalPosts
           ? totalPosts
           : currentPage * postsPerPage}{" "}
         of {totalPosts} results
-      </div>
+      </div> */}
+      <div>Page {currentPage}</div>
       <ul style={{ margin: 0 }} className="pagination">
         <li className="page-item">
           <span

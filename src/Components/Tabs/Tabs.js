@@ -22,9 +22,12 @@ function Tabs(props) {
   const [currentPage, setCurrentPage] = useState(1);
   const [icons, setIcons] = useState([]);
   const [hideCol, setHideCol] = useState(["name", "email"]);
-  const [changedName, setChangedName] = useState("id");
-  const [newName, setNewName] = useState("iddddd");
+  const [changedName, setChangedName] = useState(["id", "ff"]);
+  const [newName, setNewName] = useState(["iddddd", "fffff"]);
   const [black, setBlack] = useState("id");
+
+  const [action, setAction] = useState("");
+  const [itemPerPage, setItemPerPage] = useState(2);
 
   const setTab = (item) => {
     setCurrentTab(item);
@@ -37,8 +40,9 @@ function Tabs(props) {
       setIcons(["email"]);
       setHideCol(["name", "email"]);
       setBlack("id");
-      setChangedName("id");
-      setNewName("iddddd");
+      setChangedName(["id", "ff"]);
+      setNewName(["iddddd", "fffff"]);
+      setItemPerPage(2);
       setCurrentPage(1);
     }
     if (item === "Currency") {
@@ -46,27 +50,28 @@ function Tabs(props) {
       setIcons(["aa"]);
       setHideCol(["cc", "ff"]);
       setBlack("dd");
-      setChangedName("dd");
-      setNewName("ddddd");
+      setChangedName(["dd", "gg"]);
+      setNewName(["dddddd", "fffff"]);
+      setItemPerPage(2);
       setCurrentPage(1);
     }
     if (item === "AR Setup") {
       setPosts(ARSetup);
       setIcons(["id"]);
       setHideCol(["name"]);
-      setBlack("id");
-      setChangedName("name");
-      setNewName("nameeee");
+      setBlack("email");
+      setChangedName(["age"]);
+      setNewName(["ageeeeee"]);
+      setItemPerPage(2);
       setCurrentPage(1);
     }
   };
 
-  const [action, setAction] = useState("");
-  const [itemPerPage, setItemPerPage] = useState(2);
-
   const indexOfLastPost = currentPage * itemPerPage;
   const indexOfFirstPost = indexOfLastPost - itemPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+  console.log(itemPerPage);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -132,53 +137,6 @@ function Tabs(props) {
           </FormControl>
         </Box>
       </div>
-
-      {/* {currentTab === 1 ? (
-        <BasicTable
-          data={currentPosts}
-          black={black}
-          icons={icons}
-          hide={hideCol}
-          name={changedName}
-          newName={newName}
-        />
-      ) : currentTab === 2 ? (
-        <BasicTable
-          data={currentPosts}
-          black={black}
-          icons={icons}
-          hide={hideCol}
-          name={changedName}
-          newName={newName}
-        />
-      ) : currentTab === 3 ? (
-        <BasicTable
-          data={currentPosts}
-          black={black}
-          icons={icons}
-          hide={hideCol}
-          name={changedName}
-          newName={newName}
-        />
-      ) : currentTab === 4 ? (
-        <BasicTable
-          data={currentPosts}
-          black={black}
-          icons={icons}
-          hide={hideCol}
-          name={changedName}
-          newName={newName}
-        />
-      ) : currentTab === 5 ? (
-        <BasicTable
-          data={currentPosts}
-          black={black}
-          icons={icons}
-          hide={hideCol}
-          name={changedName}
-          newName={newName}
-        />
-      ) : null} */}
 
       <BasicTable
         data={currentPosts}

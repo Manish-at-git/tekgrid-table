@@ -45,7 +45,6 @@ export default function BasicTable(props) {
   let hide = [];
   let { black, icons } = props;
   const { items, requestSort } = useSortableData(props.data);
-  console.log(props.hide);
 
   const renderTableHeader = () => {
     let header = Object.keys(props.data[0]);
@@ -56,12 +55,8 @@ export default function BasicTable(props) {
       }
       if (props.hide.includes(key)) {
         hide.push(index);
-        console.log(hide);
       }
-      let changedHeader;
-      if (key === props.name) {
-        changedHeader = props.newName;
-      }
+
       return (
         <TableCell
           align="center"
@@ -71,7 +66,9 @@ export default function BasicTable(props) {
         >
           {
             <div className="Cell">
-              {changedHeader ? changedHeader.toUpperCase() : key.toUpperCase()}
+              {props.name.indexOf(key) !== -1
+                ? props.newName[props.name.indexOf(key)].toUpperCase()
+                : key.toUpperCase()}
               {"  "}
               {icons.includes(key.toLowerCase().trim()) ? null : (
                 <ArrowDropDownIcon onClick={() => requestSort(key)} />
